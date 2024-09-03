@@ -1,0 +1,33 @@
+Save bookmarks by email
+
+In addition to the bookmarklet, you can also save bookmarks by emailing them to Bookmark OS. This will allow you to use the share by email function to easily save bookmarks in your mobile browser. Click here to learn more.
+
+Bookmarklet
+
+These are instructions for adding the bookmarklet to your tablet or phone. They are specific to iOS but will work for Android in general.
+
+Step 1: Bookmark this page
+On iOS, tap the  icon
+Then tap the Add Bookmark icon 
+Then tap save (we will edit this bookmark in a later step).
+
+Step 2: Copy the bookmarklet
+Select all of the text in this box and Copy it:
+
+
+Tap inside the box and the keyboard will appear.
+Tap and hold for the magnifying glass and release. Select/Select All/Paste will appear.
+Tap Select All. Cut/Copy/Paste will appear.
+Tap Copy.
+
+Step 3: Edit the bookmark from step 1
+Click here to hide the keyboard.
+Tap the Bookmarks button in the toolbar (on iOS: ).
+Navigate to Favorites.
+Tap Edit in the bottom right. Tap the 'Save to Bookmark OS' bookmark from step 1.
+Tap its URL (the field below 'Save to Bookmark OS'), tap the X on the far right to clear it, tap and hold for the magnifying glass, then tap Paste.
+Press back and then tap Done.
+Going forward, any time you want to bookmark a site, you will just need to click this 'Save to Bookmark OS' bookmarklet.
+
+Step 4: Celebrate
+We apologize for the difficulty, developers have still not found an easy way to do this.

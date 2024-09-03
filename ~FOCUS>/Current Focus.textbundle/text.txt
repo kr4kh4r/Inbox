@@ -1,0 +1,11 @@
+# Current Focus
+
+- [ ] Delete all them apps that u don't need
+- [ ] anuraOS
+- [ ] desktop environment for linux (connect)
+- [ ] working osx vm  (utm)
+- [ ] mastering rclone
+- [ ] fix newterm
+
+
+mount a network drive on ios filesystem 

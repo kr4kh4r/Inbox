@@ -1,0 +1,165 @@
+
+# Virtualizing OpenCore and x86 macOS on Apple Silicon (and even iOS!)
+Jan 17, 2021
+
+Recently I purchased an M1 equipped 13” MacBook Pro. Overall the machine has been absolutely amazing however I have 1 big issue transitioning from my old Intel Hackintosh:
+
+Missing macOS guest VMs
+While its clear that both Parallels and VMWare will support Apple Silicon with macOS guests in the future, the question is when. Additionally, it’s also unclear if we’ll ever get x86 emulation from them or if its strictly ARM64 only. A bit of a shame especially as I do frequently boot old macOS VMs versions to check for bugs.
+
+To get around this, I wanted to see if our good ol friend QEMU can help us out and do full x86 emulation.
+
+For today’s experiment, we’ll try and see if we can get to the macOS recovery environment with a vanilla macOS BaseSystem. Of course we’ll be getting a bit of help from OpenCore to move this along.
+
+Note: This post was originally written against UTM version v2.0.18. Newer versions will need to adjusted accordingly.
+Getting started
+
+Before we beging, we’ll need a few things:
+
+UTM
+A very nice wrapper for QEMU in macOS, additionally also supports iOS
+See here about installing on iOS: Install
+OpenCore Image
+Our bootloader to help launch macOS, there’s a few options to choose from:
+EFI-MODERN: macOS 10.15 and newer supported
+EFI-LEGACY: Mac OS X 10.6 through 10.14 supported
+EFI-i386: Mac OS X 10.4 through 10.7 supported
+Source
+OVMF Binary
+Our UEFI image for QEMU
+Note we want edk2.git-ovmf-x64 specifically
+iOS Users can download the pre-extracted image here: OVMF.bin
+Source
+macOS Image
+See macrecovery in OpenCorePkg on how to download from Apple’s servers
+This should provide you with a BaseSystem/RestoreImage.dmg for use to play with
+For educational purposes, I’ve also provided a pre-installed OS image:
+Catalina-SETUP.qcow2(Mirror)
+To start, open up the UTM.dmg and add UTM.app to the Applications/ folder.
+
+For iOS users, see here: UTM iOS Install
+Next, download OVMF from the Qemu firmware repo and run the following:
+
+cd ~/Downloads
+# Extract the .rpm
+# Ensure filename is correct to yours
+tar -xf edk2.git-ovmf-x64-0-20201222.1538.g014b9850f2.noarch.rpm
+# Next rename and move the file into a safe place
+cp usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd ~/Desktop/OVMF.bin
+From here, we can open UTM.app and get started:
+
+
+
+We’ll first want to make a fresh VM, here I’ll list a few of the required settings to boot:
+
+System
+QEMU
+Drives
+Network
+System
+
+
+
+Architecture: x86_64
+System: Standard PC (Q35 + ICH9, 2009)
+Memory: 4096MB
+Force Multicore: True
+Note forcing multicore greatly increases the VM speed, however bugs may appear with this.
+QEMU
+
+
+
+-cpu
+Penryn,+ssse3,+sse4.1,+sse4.2,+popcnt,+xsave,+xsaveopt,check
+Drives
+
+
+
+OVMF.bin:
+Image Type: BIOS
+EFI.img:
+Image Type: Disk Image
+Interface: USB
+BaseSystem.dmg:
+Image Type: Disk Image
+Interface: USB
+Extra Disk(If you plan to install macOS):
+Image Type: Disk Image
+Interface: USB
+Size: 30720(ie. 32GB)
+Network
+
+
+
+Enabled: True
+Emulated Network Card: VMWare Paravirlulized Ethernet V3
+As noted by dvkch, newer UTM versions need Network Type user set
+Once these are all done, we can now boot our VM!
+
+Booting the VM
+
+1. OVMF Start	2. OpenCore Picker	3. macOS Kernel Starts
+		
+The boot process is slow however, and I mean very slow. But after 17min(Reduced to 8min with Force Multicore) we finally reach macOS’s recovery screen!
+
+
+
+The OS is unusable to say the least, and unfortunately won’t get much better even with tinkering. However the fact QEMU is able to emulate an Intel Penryn PC so well is quite remarkable, and OpenCore has made this much easier to build and boot.
+
+Bonus pic, installed Catalina!
+
+
+
+Bonus pic x2, High Sierra Geekbench scores!
+
+
+
+Troubleshooting
+
+No mouse control
+Recovery Contact Error: 1
+Recovery Contact Error: 2
+Can’t start x86 VM in macOS 11.2 RC 20D53
+No mouse control
+
+If your mouse doesn’t work, try pressing Control+Option+Arrows
+
+Recovery Contact Error: 1
+
+For Recovery Server contact errors, verify your time is correct in the VM by opening terminal:
+
+# Check time
+date
+	Wed 20 Jan 2021 12:12:58 MST
+# If incorrect, adjust it
+# Format: {month}{day}{hour}{minute}{year}
+date -u 01201219202
+Recovery Contact Error: 2
+
+If you continue to have Recovery Connection issues, open terminal and run the following:
+
+# Launch scutil
+scutil
+> open
+> d.init
+# Setting to Google's DNS
+> d.add ServerAddresses * 8.8.8.8 8.8.8.4
+> set State:/Network/Service/PRIMARY_SERVICE_ID/DNS
+# Verify it worked
+> d.show
+> quit
+Can’t start x86 VM in macOS 11.2 RC 20D53
+
+
+
+This is a known issue, using QEMU’s TCG in the latest beta will crash QEMUHelper that UTM relies on. Current solution is to downgrade to 11.2 beta 2 (20D5042d) or older.
+
+We’ve reported a feedback to Apple regarding this:
+
+Feedback ID: FB8978379
+UPDATE: @osy discovered that in the 11.2 RC 20D53, Apple now blocks mprotect on MAP_JIT regions. QEMU uses mprotect to guard pages at the end of the JIT region. This means that QEMU will most likely need to be updated to either remove the ASSERT or guard the page after MAP_JIT instead. UTM has already been updated for this: qemu: fix crash on macOS 11.2
+
+Mykola's blog
+
+Mykola Grymalyuk
+Blog dedicated to my rambles, including reverse engineering macOS internals, OS modding and documenting my cursed work.k

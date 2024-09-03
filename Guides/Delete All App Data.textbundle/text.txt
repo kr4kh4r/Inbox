@@ -1,0 +1,10 @@
+# Delete All App Data
+
+#appdata #keychain 
+
+Applications write keychain items to /private/var/Keychains/keychain-2.db It’s an encrypted file. Open this file with Filza, and run below SQL queries to delete the junk. SECRET_APP_NAME is the name of the app.
+
+ delete from genp where agrp like '%SECRET_APP_NAME%'
+ delete from keys where agrp like '%SECRET_APP_NAME%'
+
+Make sure, the app is removed from the task list when you run those queries. Deleting the Documents folder of the application and Keychain items is enough to reset the application. So we have a way to test this application as much as we want.

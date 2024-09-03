@@ -1,0 +1,23 @@
+# How to COMPLETELY erase ALL app data!
+
+## Tutorial
+Hello everyone, after long hours of research throughout the Internet I’ve found the solution to delete a Device ID linked to an app, this can be useful because some apps are remembering the UDID of the phone on their keychain, so this means that you can’t reset app data even by deleting the application. I’ve used this method to completely erase "Fun Phone Call" app, it’s an app which allows you to spoof your Caller ID but it remembers the Device ID in their keychain.
+
+### Now here’s the tutorial:
+
+## Step 1: Delete the game.
+
+Step 2: Now go to Filza -> Apps manager -> search for your app and tap on the i on the right, now found the Team ID which has 10 characters copy it, then copy the BundleID
+
+Step 3: OPEN Filza and OPEN /var/Keychains/keychain-2.db with SQlite3Editor (just tap on it).
+
+Step 4: Open the "genp" table and then type at the top: 
+
+delete from genp where agrp = 'S9JABAKPJW.com.telestar.revvoicechanger' and hit search then done so that it gets SAVED
+
+Step 5: Reboot your iDevice
+
+Step 6: Download and install the app again.
+
+Step 7: Open the app and now the data is completely erased! (this method is working with Clash Of Clans as well)
+

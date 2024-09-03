@@ -1,0 +1,124 @@
+Toggle navigation
+
+How to use
+Tips & tricks
+Tools
+FAQ
+Site updates
+CATEGORIES
+Basics
+Navigation and movement
+Tags and filters
+"State" shortcuts
+Bookmarks
+Tab management
+To-dos
+Notes
+Files
+Browser extension
+Basics
+
+Just the basics: creating, editing, deleting, moving, sorting, searching, and sharing.
+
+Change theme
+Change desktop background
+Context menus
+Add a new item
+Edit an item
+Delete an item
+Delete multiple items
+Open an item
+Move an item
+Sorting
+Custom sorting
+Searching
+Folder sharing
+Folder collaboration
+Change folder color
+Change theme
+Right-click the desktop and select, "Change theme" or click the gears icon, then "General Settings," then "Change theme."
+
+
+
+Change desktop background
+Right-click the desktop and select, "Change background" or click the gears icon, then "General Settings," then "Change desktop background."
+
+Context menus
+Right-click items and the desktop for different context menus. You can also right-click an item when multiple items are highlighted for a "multiple item" context menu.
+
+
+
+Add a new item
+Press the + icon in the nav and select the item you would like to add:
+
+
+
+You can also right-click the background of the desktop for a context menu:
+
+
+
+Edit an item
+Right-click the item you would like to edit for a context menu and click 'Edit':
+
+
+
+A popup with fields will appear. Update the appropriate fields and click 'Update item' to save.
+
+Delete an item
+Right-click the item you would like to delete for a context menu and click 'Delete':
+
+
+
+After you click 'Delete', a confirmation popup will appear asking, 'Are you sure you want to delete?' Click the red 'Delete' button in the bottom right of the popup to complete the deletion.
+
+Delete multiple items
+Click and drag select multiple items. Once multiple items are selected, right-click one of the selected items. A context menu will appear. Click 'Delete' and a confirmation popup will appear. Click 'Confirm' in the popup.
+
+
+
+Open an item
+There are two ways to open an item:
+
+Double-click the item to open it, just like opening a file or folder on your computer.
+Right-click the item to access it's context menu and click 'Open' or 'Open in new tab' (for bookmarks):
+
+
+Move an item
+There are two ways to move an item:
+
+Click and drag an item into another folder. You can drag an item into folders in the folder tree on the left as well:
+
+
+
+The other way is to right-click an item and click 'Move.' A folder select menu will appear. Navigate to the destination and click 'Select.' Then click 'Confirm' to complete the move.
+Sorting
+Just about any view that you are in can be sorted: folders, the desktop, search results and view all mode. You can sort by 'Name', 'Date created', 'Last opened', and 'Domain':
+
+
+
+Custom sorting
+Custom sorting allows you to customize the order of items by dragging them into the order you want. For example, you could keep your 'Read later' folder as the first folder on your desktop. To enable custom sorting, select 'Custom' from the sort dropdown and then click on the 'Move item' icon ( the one with two squares that appears to the right of the 'All' button). When custom sorting is enabled, you will be able to drag items into the positions you like. When you are done sorting, click the 'Move item' icon again to disable custom sorting.
+
+
+Searching
+You can search your items using the input field in the upper right. Item names, notes, and domains are all included as search parameters. The search uses prefix matching, so if you are searching for a bookmark named, 'Apple,' a search input of 'App' would match it. A search result of just the letter 'a' would match it as well. More info:
+
+Search results can be sorted just like any folder.
+Use the arrow navigation in the top left to navigate to and from search results.
+Click the small 'x' in the search input to go back in navigation.
+Items can be moved from search results into different folders.
+Folder sharing
+You can share folders and allow others to copy all the contents: bookmarks, to-dos, notes, and files. Right-click the folder you want to share, click share and then click, "Allow people to copy this folder using a link." You will then need to make the folder public. Making the folder will make the folder accessible publicly. You will then be given a link which you can share.
+
+Folder collaboration
+You can also collaborate together on a specific folder. Right-click the folder you want to collaborate on, click share, and then click, "Invite people to collaborate by email." Currently folder collaboration only works for bookmarks. Any bookmarks you add or delete to the folder will be updated in all the other copies.
+
+Change folder color
+Right-click the folder, click, "Edit" then click, "Change color."
+
+FAQ·How to use·Tools·Pricing·Contact·Press kit·Blog·Twitter
+Bookmark OS © 2015-2024
+Made with ❤ in San Francisco
+
+Terms of service
+Privacy policy

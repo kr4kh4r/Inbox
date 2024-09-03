@@ -1,0 +1,51 @@
+Tutorial] how to convert an Xcode project to a theos project Ex: Minicode
+
+Tutorial
+here is my Minicode fork that has been converted to a theos application.
+
+ 
+
+Let's begin
+
+ 
+
+Remove the .xcodeproj folder
+ 
+
+2)Create a file named as "Makefile" excluding the quotes of course
+
+ 
+
+3)In this makefile, you need to specify multiple items Ex: the tweak/app name, the files that theos needs to compile (note you should NOT include any .h files in @your_program_FILES.)
+
+ 
+
+I would also recommend using GO_EASY_ON_ME = 1 in your makefile. If you avoid this, theos will treat the warnings as errors.
+
+ 
+
+Note: If this seems confusing, use the Makefile in my forked Minicode project and modify the tweak name and decide if you need my cflags. (cflags are compiler flags). Don't forget to include your required framework names in the makefile.
+
+ 
+
+4) create a directory named layout in your project folder.
+
+ 
+
+5)create a directory named DEBIAN in the layout folder.
+
+ 
+
+6) In the DEBIAN folder create a file named "control" and use my control file as a template (make sure to change the names from mine)
+
+ 
+
+7)Create a Resources folder and move your files and folders besides the source code and the layout folder one into it.
+
+ 
+
+8)In the Resources folder create a Info.plist file (use my Info.plist file as a template)
+
+ 
+
+That's it, do a make package and you are golden. (let me know if I missed anything in this tutorial)
